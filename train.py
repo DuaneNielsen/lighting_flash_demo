@@ -41,8 +41,8 @@ if __name__ == '__main__':
     wandb_image_f = WandbImagePredCallback(num_samples=4)
 
     checkpoint_f = ModelCheckpoint(dirpath=f"checkpoints//{wandb_logger.experiment.name}/",
-                                   save_top_k=1, mode='min',
-                                   monitor="val_cross_entropy")
+                                   save_top_k=1, mode='max',
+                                   monitor="val_accuracy")
 
     # Create the DataModule
     download_data("https://pl-flash-data.s3.amazonaws.com/hymenoptera_data.zip", "/mnt/data/data")
